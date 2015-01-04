@@ -1,0 +1,372 @@
+<?php require_once("includes/connection.php"); ?>
+<?php require_once("includes/functions.php"); ?>
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<title>Tailor Managment System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <!-- bootstrap -->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+
+    <!-- libraries -->
+    <link href="css/lib/uniform.default.css" type="text/css" rel="stylesheet">
+    <link href="css/lib/select2.css" type="text/css" rel="stylesheet">
+    <link href="css/lib/bootstrap.datepicker.css" type="text/css" rel="stylesheet">
+    <link href="css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="css/compiled/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/compiled/elements.css">
+    <link rel="stylesheet" type="text/css" href="css/compiled/icons.css">
+
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="css/compiled/form-wizard.css" type="text/css" media="screen" />
+
+    <!-- open sans font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- lato font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- navbar -->
+    <header class="navbar navbar-inverse" role="banner">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" id="menu-toggler">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><img src="img/logo.png"></a>
+        </div>
+        
+    </header>
+    <!-- end navbar -->
+
+    <!-- sidebar -->
+    <div id="sidebar-nav">
+        <ul id="dashboard-menu">
+            <li class="active">
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+                <a href="#">
+                    <span>New Customer</span>
+                </a>
+            </li>            
+
+            <li >
+                
+                <a class="dropdown-toggle" href="#">
+                    
+                    <span>Update</span>
+                    <i class="icon-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="up_cust.html">Customer Info</a></li>
+                    <li><a href="up_size.html">Size</a></li>
+                    <li><a href="up_style.html">Style</a></li>
+                    <li><a href="up_status.html">Order Status</a></li>
+                </ul>
+            </li>
+            
+            <li >
+                
+                <a class="dropdown-toggle" href="#">
+                    
+                    <span>Search</span>
+                    <i class="icon-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="search.html">Customer Info</a></li>
+                    
+                    <li><a href="search_stat.html">Order Status</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="delete.html">
+                    
+                    <span>Delete</span>
+                </a>
+            </li>
+            
+
+        </ul>
+    </div>
+    <!-- end sidebar -->
+
+
+	<!-- main container -->
+    <div class="content">
+        
+
+        
+        <div id="pad-wrapper">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <div id="fuelux-wizard" class="wizard row">
+                        <ul class="wizard-steps">
+                            <li data-target="#step1" class="active">
+                                <span class="step">1</span>
+                                <span class="title">General <br> information</span>
+                            </li>
+                            <li data-target="#step2">
+                                <span class="step">2</span>
+                                <span class="title">Measurements</span>
+                            </li>
+                            <li data-target="#step3">
+                                <span class="step">3</span>
+                                <span class="title">Style</span>
+                            </li>
+                            <li data-target="#step4">
+                                <span class="step">4</span>
+                                <span class="title">Order <br> info</span>
+                            </li>
+                        </ul>                            
+                    </div>
+                    <div class="step-content">
+                        <div class="step-pane active" id="step1">
+                            <div class="row form-wrapper">
+                                <div class="col-md-8">
+                                    <form id="form1">
+                                        <div class="field-box">
+                                            <label>Name:</label>
+                                            <input class="form-control" type="text" name="name" value="" id="name" />
+                                        </div>
+
+                                        <div class="field-box">
+                                            <label>Contact No:</label>
+                                            <input class="form-control" type="text" name="contact" value="" id="contact" />
+                                            
+                                        </div>
+                                       
+                                        <div class="field-box">
+                                            <label>Email:</label>
+                                            <input class="form-control" type="text" name="emailid" value="" id="emailid" />
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-pane" id="step2">
+                            <div class="row form-wrapper">
+                                <div class="col-md-8">
+                                    <form id="form2">
+                                        <div class="field-box">
+                                            <label>Waist:</label>
+                                            <input class="form-control" type="text" name="vaistsize" value="" id="vaistsize"  />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Collar:</label>
+                                            <input class="form-control" type="text" name="collarsize" value="" id="collarsize" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Chest:</label>
+                                            <input class="form-control" type="text" name="chestsize" value="" id="chestsize" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Shirt Length:</label>
+                                            <input class="form-control" type="text" name="shirtlength" value="" id="shirtlength"/>
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Kameez Length:</label>
+                                            <input class="form-control" type="text" name="kameezlength" value="" id="kameezlength"/>
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Sleeves Length:</label>
+                                            <input class="form-control" type="text" name="sleeveslength" value="" id="sleeveslength"/>
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Sholder Size:</label>
+                                            <input class="form-control" type="text" name="shouldersize" value="" id="shouldersize"/>
+                                        </div>  
+                                        <div class="field-box">
+                                            <label>Lower Length:</label>
+                                            <input class="form-control" type="text" name="lowerlength" value="" id="lowerlength"/>
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Lower Collar Size:</label>
+                                            <input class="form-control" type="text" name="lowercollarsize" value="" id="lowercollarsize" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-pane" id="step3">
+                            <div class="row form-wrapper">
+                                <div class="col-md-8">
+                                    <form id="form3">
+                                        <div class="field-box">
+                                            <label>Collar Style:</label>
+                                            <input class="form-control" type="text" name="collarstyle" value="" id="collarstyle" />
+                                        </div>
+                                        
+                                        <div class="field-box">
+                                            <label>Stitching Style:</label>
+                                            <input class="form-control" type="text"  name="stitchingstyle" value="" id="stitchingstyle"/>
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Bottom Style:</label>
+                                            <input class="form-control" type="text"  name="bottomstyle" value="" id="bottomstyle" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Cuff Style:</label>
+                                            <input class="form-control" type="text" name="cuffstyle" value="" id="cuffstyle" />
+                                        </div>
+                                        
+                                        <div class="field-box">
+                                            <label>Pocket Style:</label>
+                                            <input class="form-control" type="text" name="pocketstyle" value="" id="pocketstyle" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Front Style:</label>
+                                            <input class="form-control" type="text" name="frontstyle" value="" id="frontstyle" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Lower Style:</label>
+                                            <input class="form-control" type="text" name="lowerstyle" value="" id="lowerstyle" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Custom Style:</label>
+                                            <input class="form-control" type="text" name="customstyle" value="" id="customstyle"/>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-pane" id="step4">
+                            <div class="row form-wrapper payment-info">
+                                <div class="col-md-8">
+                                    <form id="form4">
+                                        
+                                        <div class="field-box">
+                                            <label>Quantity:</label>
+                                            <input class="form-control" type="number" name="qty" value="" id="qty"  />
+                                        </div>
+                                        
+                                        <div class="field-box">
+                                            <label>Due Date:</label>
+                                            <input class="form-control" name="duedate" value="" id="duedate" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wizard-actions">
+                        <button type="button" disabled class="btn-glow primary btn-prev"> 
+                            <i class="icon-chevron-left"></i> Prev
+                        </button>
+                        <button type="button" class="btn-glow primary btn-next" data-last="Finish">
+                            Next <i class="icon-chevron-right"></i>
+                        </button>
+                        <button type="button" class="btn-glow success btn-finish">
+                            Finish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main container -->
+
+
+	<!-- scripts -->
+    <script src="js/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="js/bootbox.min.js"></script>
+
+    <script src="js/theme.js"></script>
+    <script src="js/fuelux.wizard.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var post_data;
+            var $wizard = $('#fuelux-wizard'),
+                $btnPrev = $('.wizard-actions .btn-prev'),
+                $btnNext = $('.wizard-actions .btn-next'),
+                $btnFinish = $(".wizard-actions .btn-finish");
+
+            $wizard.wizard().on('finished', function(e) {
+                    
+
+                // wizard complete code
+            }).on("changed", function(e) {
+                var step = $wizard.wizard("selectedItem");
+                // reset states
+                $btnNext.removeAttr("disabled");
+                $btnPrev.removeAttr("disabled");
+                $btnNext.show();
+                $btnFinish.hide();
+
+                if (step.step === 1) {
+                    $btnPrev.attr("disabled", "disabled");
+                } else if (step.step === 4) {
+                    $btnNext.hide();
+                    $btnFinish.show();
+                }
+            });
+
+            $btnPrev.on('click', function() {
+                $wizard.wizard('previous');
+            });
+            $btnNext.on('click', function() {
+                $wizard.wizard('next');
+            });
+            $btnFinish.on('click', function() {
+                    
+                
+                    
+                    
+                    var post_url = 'create_newcustomer.php';
+                    post_data = $("#form1").serialize() + "&" + $("#form2").serialize() + "&" + $("#form3").serialize() + "&" + $("#form4").serialize();
+
+                    
+                    $.ajax({
+                        
+                        type: 'POST',
+                        url: post_url, 
+                        data: post_data, 
+                        //data: $('#myidform').serialize(),
+                        //beforeSend: function () { location.href = "#index"; $("#loader").css("display","block"); }, //Show spinner
+                        //complete: function () { $("#loader").css("display","none"); }, //Hide spinner
+                        success: function(msg){
+                                bootbox.alert("New Customer has been Added to Database.", function() {
+                                    console.log("Alert Callback");
+                                });
+                                
+
+                            },
+                        error: function(){
+                                bootbox.alert("Failed", function() {
+                                    console.log("Alert Callback");
+                                }); 
+                            }
+                        });
+            });
+        });
+    </script>
+
+
+
+
+
+</html>
+
+<?php require("includes/footer.php"); ?>

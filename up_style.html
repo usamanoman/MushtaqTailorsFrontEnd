@@ -1,0 +1,226 @@
+<?php require_once("includes/connection.php"); ?>
+<?php require_once("includes/functions.php"); ?>
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<title>Tailor Managment System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <!-- bootstrap -->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+
+    <!-- libraries -->
+    <link href="css/lib/uniform.default.css" type="text/css" rel="stylesheet">
+    <link href="css/lib/select2.css" type="text/css" rel="stylesheet">
+    <link href="css/lib/bootstrap.datepicker.css" type="text/css" rel="stylesheet">
+    <link href="css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="css/compiled/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/compiled/elements.css">
+    <link rel="stylesheet" type="text/css" href="css/compiled/icons.css">
+
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="css/compiled/form-wizard.css" type="text/css" media="screen" />
+
+    <!-- open sans font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- lato font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- navbar -->
+    <header class="navbar navbar-inverse" role="banner">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" id="menu-toggler">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><img src="img/logo.png"></a>
+        </div>
+        
+    </header>
+    <!-- end navbar -->
+
+    <!-- sidebar -->
+    <div id="sidebar-nav">
+        <ul id="dashboard-menu">
+            <li >
+                
+                <a href="new_cust.html">
+                    <span>New Customer</span>
+                </a>
+            </li>            
+
+            <li>
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+                <a class="dropdown-toggle" href="#">
+                    
+                    <span>Update</span>
+                    <i class="icon-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="up_cust.html">Customer Info</a></li>
+                    <li><a href="up_size.html">Size</a></li>
+                    <li><a href="up_style.html">Style</a></li>
+                    <li><a href="up_status.html">Order Status</a></li>
+                </ul>
+            </li>
+            
+            <li >
+                
+                <a class="dropdown-toggle" href="#">
+                    
+                    <span>Search</span>
+                    <i class="icon-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="search.html">Customer Info</a></li>
+                    
+                    <li><a href="search_stat.html">Order Status</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="delete.html">
+                    
+                    <span>Delete</span>
+                </a>
+            </li>
+            
+
+        </ul>
+    </div>
+    <!-- end sidebar -->
+
+
+	<!-- main container -->
+    <div class="content">
+        
+
+        
+        <div id="pad-wrapper" class="form-page">
+            <div class="row form-wrapper">
+                <!-- left column -->
+                <div class="col-md-8 column">
+                    <form id="form">
+                        <div class="field-box">
+                            <label>Customer ID:</label>
+                            <div class="col-md-7">
+                                <input class="form-control"  type="number" name="cust_id" value="" id="cust_id"/>
+                            </div>                            
+                        </div>
+                                        <div class="field-box">
+                                            <label>Collar Style:</label>
+                                            <input class="form-control" type="text" name="collarstyle" value="" id="collarstyle" />
+                                        </div>
+                                        
+                                        <div class="field-box">
+                                            <label>Stitching Style:</label>
+                                            <input class="form-control" type="text"  name="stitchingstyle" value="" id="stitchingstyle"/>
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Bottom Style:</label>
+                                            <input class="form-control" type="text"  name="bottomstyle" value="" id="bottomstyle" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Cuff Style:</label>
+                                            <input class="form-control" type="text" name="cuffstyle" value="" id="cuffstyle" />
+                                        </div>
+                                        
+                                        <div class="field-box">
+                                            <label>Pocket Style:</label>
+                                            <input class="form-control" type="text" name="pocketstyle" value="" id="pocketstyle" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Front Style:</label>
+                                            <input class="form-control" type="text" name="frontstyle" value="" id="frontstyle" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Lower Style:</label>
+                                            <input class="form-control" type="text" name="lowerstyle" value="" id="lowerstyle" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Custom Style:</label>
+                                            <input class="form-control" type="text" name="customstyle" value="" id="customstyle"/>
+                                        </div>
+
+                        <input class="btn-glow primary" id="action_btn" type="submit" value="UPDATE" />
+                        
+                    </form>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+    <!-- end main container -->
+
+
+	<!-- scripts -->
+    <script src="js/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="js/bootbox.min.js"></script>
+
+    <script src="js/theme.js"></script>
+
+    <script type="text/javascript">
+        var post_data;
+        $(document).ready(function(){
+                
+            $("#form").submit(function(e) {
+                    e.preventDefault();
+                    
+                    var post_url = 'update_style_red.php';
+                    post_data = $("#form").serialize();
+
+                    
+                    $.ajax({
+                        type: 'POST',
+                        url: post_url, 
+                        data: post_data, 
+                        //data: $('#myidform').serialize(),
+                        //beforeSend: function () { location.href = "#index"; $("#loader").css("display","block"); }, //Show spinner
+                        //complete: function () { $("#loader").css("display","none"); }, //Hide spinner
+                        success: function(){
+                                bootbox.alert("Record Updated.", function() {
+                                    console.log("Alert Callback");
+                                });
+                                
+                                
+
+                            },
+                        error: function(){
+                                bootbox.alert("Failed.", function() {
+                                    console.log("Alert Callback");
+                                });
+                            }
+                        });
+            });
+        });
+    </script>
+
+
+
+
+
+
+</html>
+
+<?php require("includes/footer.php"); ?>
